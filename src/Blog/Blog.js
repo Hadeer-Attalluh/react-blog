@@ -1,8 +1,10 @@
 import React from 'react';
 import UserListing from './Users/List';
-import PostListing from './Posts/List';
 import {ViewUser} from './Users/View';
 import {AddUser} from './Users/Add';
+import PostListing from './Posts/List';
+import {AddPost} from './Posts/Add';
+import {PostDetails} from './Posts/Details';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import axios from 'axios';
 import { Row, Col, Container } from 'react-bootstrap';
@@ -27,7 +29,8 @@ class Blog extends React.Component {
                         <Route exact path="/users/add" component={AddUser} />
                         <Route exact path="/users/veiw/:id" component={ViewUser} />
                         <Route exact path="/posts" component={PostListing} />
-                        {/* <Route exact path="/posts/add" component={AddPost} /> */}
+                        <Route exact path="/posts/add" component={AddPost} />
+                        <Route exact path="/posts/:id/userId/:userId/details" component={PostDetails} />
                     </Switch>
                 </>
             </Router>

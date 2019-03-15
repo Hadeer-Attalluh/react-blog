@@ -10,28 +10,31 @@ export class AddUser extends React.Component {
             name: "",
             username: "",
             email: "",
-            address: { street: "" },
+            address: "",
             phone: "",
             website: "",
-            company: { name: "" }
+            company: ""
         }
         this.formSchema = new SimpleSchema({
             id: SimpleSchema.Integer,
             name: { type: String, min: 3, max: 50 },
             username: String,
-            email: { type: String, regEx: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/ },
-            address: { type: { street: String }, optional: true },
+            // email: { type: String, regEx: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/ },
+            email: { type: String, regEx: SimpleSchema.RegEx.Email},           
+            address: { type: String , optional: true },
             phone: String,
             website: { type: String, optional: true },
-            company: { type: { name: String }, optional: true }
+            company: { type:  String , optional: true }
         });
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
     handleSubmit(e) {
+        e.preventDefault();
+        console.log(this.state);
         this.formSchema.validate(this.state);
         console.log(this.formSchema.isValid());
-        console.log(this.formSchema.validationErrors());
+        console.log(this.formSchema.validationErrors()+"dkjhuyd");
     }
     handleChange(e) {
         const value = (e.target.name === "id") ? Number(e.target.value) : e.target.value;
@@ -40,7 +43,7 @@ export class AddUser extends React.Component {
     render() {
         return (
             <Container className="p-3">
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="userID">
                         <Form.Label>User ID</Form.Label>
                         <Form.Control type="number" placeholder="Enter Id Number" name="id" onChange={this.handleChange} />
@@ -79,7 +82,7 @@ export class AddUser extends React.Component {
                         <Form.Control type="" placeholder="Phone Number" name="phone" onChange={this.handleChange} />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" onClick={this.handleSubmit}>Add</Button>
+                    <Button variant="primary" type="submit">Add</Button>
                 </Form>
             </Container>
         );

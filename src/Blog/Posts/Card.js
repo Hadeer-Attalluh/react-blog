@@ -1,10 +1,11 @@
 import React from 'react';
 import { Media } from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 export function PostCard(props) {
     const { userId, id, title, body } = props;
+    // debugger;
     return (
-        <Media as="li" key={userId}>
+        <Media as="li" key={userId} className="m-1">
             <img
                 width={64}
                 height={64}
@@ -17,6 +18,7 @@ export function PostCard(props) {
                 <p>
                     {body}
                 </p>
+            <Link to={`posts/${id}/userId/${userId}/details`} className="btn btn-primary">View Post Details</Link>
             </Media.Body>
         </Media>
     )

@@ -3,6 +3,7 @@ import {PostCard} from './Card';
 import React from 'react';
 import {Row, Button,Container} from 'react-bootstrap';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 export default class PostListing extends React.Component {
     constructor(props) {
@@ -31,11 +32,10 @@ export default class PostListing extends React.Component {
         return (
             <Container>
             <Row noGutters={true}>
-                <Button className="">Add Post</Button>
+                <Link to='posts/add' className="m-2 btn btn-primary">Add Post</Link>
             </Row>
             <Row noGutters={true}>
                 <ul className="list-unstyled">
-                {/* <ul> */}
                     {posts.map((Element) => <PostCard {...Element} />)}
                 </ul>
             </Row>

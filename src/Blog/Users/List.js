@@ -36,9 +36,7 @@ export default class UserListing extends React.Component {
         return (
             <Container>
                 <Row noGutters={true}>
-                    <Button className="">
-                    <Link to="users/add">Add User</Link>
-                    </Button>
+                    <Link to="users/add" className="btn btn-primary m-2">Add User</Link>
                 </Row>
                 <Row>
                     {users.map((Element) => <UserCard {...Element} />)}

@@ -7,7 +7,7 @@ export default function UserCard(props)
 {
   const { id,username, phone, name, email, address, website, company } = props;
   return (
-    <Col key={phone}>
+    <Col key={phone} className="m-2">
       <Card>
         <Card.Img variant="top" src="https://www.lycatv.tv/img/web/avatar_1.png" alt="User Photo" />
         <Card.Body>
